@@ -21,7 +21,6 @@ class FilesController extends AppController
     public function beforeFilter(Event $event) 
     {
         parent::beforeFilter($event);
-        $this->__checklogin();
         if ($this->RequestHandler->responseType() == 'json') {
             $this->RequestHandler->setContent('json', 'application/json');
         }
@@ -108,6 +107,7 @@ class FilesController extends AppController
             $arrConditions = array('user_id' => $userId);
         }
         $files = TableRegistry::get('Files');
+        $arrConditions = array('Files.id NOT IN' => $this->request->session()->read('Auth.User.file.id'));
         if ($this->request->session()->read('Auth.User.role') != 'admin') {
             $arrConditions = array('user_id' => $this->request->session()->read('Auth.User.id'));
         }
@@ -117,6 +117,27 @@ class FilesController extends AppController
             'limit' => 5
         );
         $this->set('files', $this->paginate('Files'));
+    }
+    
+    public function admin_index($userId = 0)
+    {
+        $arrConditions = array();
+        if (!empty($userId)) {
+            $this->set(compact('userId'));
+            $arrConditions = array('user_id' => $userId);
+        }
+        $files = TableRegistry::get('Files');
+        $arrConditions = array('Files.id NOT IN' => $this->request->session()->read('Auth.User.file.id'));
+        if ($this->request->session()->read('Auth.User.role') != 'admin') {
+            $arrConditions = array('user_id' => $this->request->session()->read('Auth.User.id'));
+        }
+        $this->paginate = array(
+            'conditions' => $arrConditions,
+            'order' => array('Files.created' => 'desc'),
+            'limit' => 5
+        );
+        $this->set('files', $this->paginate('Files'));
+        $this->render('/Files/index');
     }
 
     public function download($filename)

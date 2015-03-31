@@ -2,7 +2,39 @@
 use Cake\Core\Configure;
 ?>
 <header class="header">
-    <?php echo $this->Html->link($this->Html->image(Configure::read('Gtw.site_logo_url'),['alt'=>Configure::read('Gtw.site_name')]), ['controller' => 'admins', 'action' => 'index'], ['escape' => false, 'class' => 'logo']) ?>
+    <?php if ($this->Session->read('Auth.User.role') == 'admin'): ?>
+        <div class="admin-special-header container-fluid no-padding navbar-inverse">
+            <div class="navbar-header">
+                <?php
+                echo $this->Html->link(
+                        'Admin Panel', ['controller' => 'users', 'action' => 'profile'], ['escape' => false, 'class' => ['logo navbar-inverse']]
+                );
+                ?>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-admin-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="bs-admin-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <?php
+                        echo $this->Html->link(
+                                __('Visit Site'). '&nbsp;<i class="fa fa-sign-in">&nbsp;</i>', ['plugin' => 'GintonicCMS', 'controller' => 'users', 'action' => 'change_layout'], ['escape' => false]
+                        );
+                        ?>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php echo $this->Html->link(
+        $this->Html->image('GintonicCMS.gintonic-white.png',['alt'=>Configure::read('site_name')]),
+        ['controller' => 'admins', 'action' => 'index'], 
+        ['escape' => false, 'class' => 'logo']
+    ); ?>
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
@@ -20,13 +52,7 @@ use Cake\Core\Configure;
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header bg-danger">
-                            <?php 
-                            if (!empty($adminAvatar)) {
-                                echo $this->Html->image($adminAvatar, ['class' => 'img-circle']);
-                            } else {
-                                echo $this->Html->image('GintonicCMS.admin/avtar3.png', ['class' => 'img-circle']);
-                            }
-                            ?>
+                            <?php echo $this->Html->image($this->Custom->getFileUrl($this->Session->read('Auth.User.file.filename')), ['class' => 'img-circle']); ?>
                             <p>
                                 <?php echo $this->Session->read('Auth.User.first') . ' ' . $this->Session->read('Auth.User.last');?>
                             </p>
@@ -51,4 +77,5 @@ use Cake\Core\Configure;
             </ul>
         </div>
     </nav>
+    
 </header>

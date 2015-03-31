@@ -3,51 +3,40 @@
 namespace GintonicCMS\Controller;
 
 use App\Controller\AppController as BaseController;
+use Cake\Core\Configure;
 
 class AppController extends BaseController
 {
-    public $helpers = ['GintonicCMS.GtwRequire','GintonicCMS.Custom'];
-    
-    public $paginate = ['maxLimit' => 5];
+    public $helpers = [
+        'GintonicCMS.GtwRequire',
+        'GintonicCMS.Custom',
+        'Form' => ['className' => 'BoostCake.Form'],
+        'Paginator' => ['className' => 'BoostCake.Paginator'],
+    ];
     
     function initialize() 
     {
-        parent::initialize();
         $this->loadComponent('Flash');
-        $this->loadComponent('GtwCookie');
+        $this->loadComponent('GintonicCMS.Cookie');
         $this->loadComponent('GintonicCMS.FlashMessage');
-        $this->loadComponent('Auth');
-        
-        // Allow the display action so our pages controller
-        $this->Auth->allow(['display']);
+        $this->__set_layout();
+        parent::initialize();
     }
     
-    function isAuthorized($user)
+    function isAuthorized($user = null)
     {
-        if(!empty($user)){
-            if($user['role'] == 'admin'){
-                $this->layout = 'admin';
-            }
+        if(!empty($user) && $user['role'] == 'admin'){
             return true;
-        }else{
-            return false;
         }
+        return parent::isAuthorized($user);
     }
     
-    function __checklogin()
+    function __set_layout()
     {
-        $user = $this->Auth->user();
-        $this->layout = 'default';
-        if(!empty($user)){
-            if($user['role'] == 'admin'){
-                if(!empty($user['file_id'])){
-                    $this->loadModel('GintonicCMS.Files');
-                    $adminAvatar ='/' . $this->Files->getUrl('',$user['file_id']);
-                    $this->set(compact('adminAvatar'));
-                }
-                $this->layout = 'GintonicCMS.admin';
-            }
+        if(!$this->request->session()->check('Site.layout')){
+            $this->request->session()->write('Site.layout',Configure::read('Site.layout'));
         }
+        $this->layout = $this->request->session()->read('Site.layout');
     }
     
 }

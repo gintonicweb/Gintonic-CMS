@@ -3,10 +3,10 @@ $this->assign('pagetitle', __('Edit user') . '<small>' . __('User Management') .
 $this->Html->addCrumb(__('User Management'), ['controller' => 'users', 'action' => 'index']);
 $this->Html->addCrumb(__('Edit user'));
 $this->start('top_links');
-echo $this->Html->link('<i class="fa fa-reply">&nbsp;</i> Back', ['action' => 'index'], ['class' => 'btn btn-default', 'escape' => false, 'title' => 'Click here to goto users list']);
+echo $this->Html->link('<i class="fa fa-reply">&nbsp;</i> Back', ['action' => 'admin_index'], ['class' => 'btn btn-default', 'escape' => false, 'title' => 'Click here to goto users list']);
 if($this->request->session()->read('Auth.User.role') == 'admin'){
-    echo $this->Html->link('<i class="fa fa-plus">&nbsp;</i> Add User', ['action' => 'add'], ['class' => 'btn btn-primary', 'escape' => false, 'title' => 'Click here to add new user']);
-    echo $this->Html->link('<i class="fa fa-th">&nbsp;</i> View User', ['action' => 'view', $user->id], ['class' => 'btn btn-primary', 'escape' => false, 'title' => 'Click here to view this user']);
+    echo $this->Html->link('<i class="fa fa-plus">&nbsp;</i> Add User', ['action' => 'admin_add'], ['class' => 'btn btn-primary', 'escape' => false, 'title' => 'Click here to add new user']);
+    echo $this->Html->link('<i class="fa fa-th">&nbsp;</i> View User', ['action' => 'admin_view', $user->id], ['class' => 'btn btn-primary', 'escape' => false, 'title' => 'Click here to view this user']);
 }
 $this->end();
 
@@ -28,11 +28,7 @@ echo $this->Form->create($user, ['templates' => ['inputContainer' => '<div class
         <div id = "upload-alert"></div>
         <div id="modal-loader"></div>
         <?php
-        if (!empty($avatar)) {
-            echo $this->Html->image($avatar, array('class' => 'img-responsive img-thumbnail', 'id' => 'gtwuserphoto'));
-        } else {
-            echo $this->Html->image('http://i.imgur.com/dCVa3ik.jpg', array('class' => 'img-responsive img-thumbnail', 'id' => 'gtwuserphoto'));
-        }
+        echo $this->Html->image($this->Custom->getFileUrl($this->Session->read('Auth.User.file.filename')), array('class' => 'img-responsive img-thumbnail', 'id' => 'gtwuserphoto'));
         ?>
         <button type="button" class="btn btn-default upload" data-loading-text="Loading..." data-upload-callback="users/update_avatar">Change Avatar</button>
     </div>

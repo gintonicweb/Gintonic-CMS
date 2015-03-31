@@ -8,7 +8,7 @@ use Cake\Auth\DefaultPasswordHasher;
 class User extends Entity
 {
 
-    protected $_accessible = ['full_name'=>true,'first'=>true,'last'=>true,'*' => true];
+    protected $_accessible = ['*' => true];
     protected $_virtual = ['full_name'];
 
     protected function _setPassword($password)
@@ -18,15 +18,18 @@ class User extends Entity
     
     protected function _getFullName()
     {
-        return $this->_properties['first'] . '  ' . $this->_properties['last'];
+        if(isset($this->_properties['first']) && isset($this->_properties['last'])){
+            return $this->_properties['first'] . '  ' . $this->_properties['last'];
+        }
+        return false;
     }
     
     protected function _getUserFiles()
     {
         $files = TableRegistry::get('Files');
         return $files->find('all')
-                    ->where(['user_id' => $this->id])
-                    ->all();
+            ->where(['user_id' => $this->id])
+            ->all();
     }
     
 }

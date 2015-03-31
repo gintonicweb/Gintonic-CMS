@@ -7,13 +7,13 @@
             <?php echo $this->fetch('title') ?>
         </title>
         <?php echo $this->Html->meta('icon') ?>
-        <?php echo $this->Html->css('GintonicCMS.site.css') ?>
+        <?php echo $this->Html->css('GintonicCMS.admin.css') ?>
         
         <?php echo $this->fetch('meta') ?>
         <?php echo $this->fetch('css') ?>
         <?php echo $this->fetch('script') ?>
     </head>
-    <body class="wysihtml5-supported  pace-done fixed skin-blue">
+    <body class="wysihtml5-supported  pace-done skin-blue">
         <?php echo $this->element('GintonicCMS.admin/header')?>
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <?php echo $this->element('GintonicCMS.admin/left')?>
@@ -42,10 +42,10 @@
                 </section>
             </aside>
         </div>
-        <?php echo $this->GtwRequire->req('jquery');?>
-        <?php echo $this->GtwRequire->req('bootstrap');?>
+        <?php 
+        echo $this->GtwRequire->req('jquery');
+        echo $this->GtwRequire->req('bootstrap');
+        ?>
         <?php echo $this->GtwRequire->load($this->Url->build('/',TRUE).'gintonic_c_m_s/js/config'); ?>
-        <?php echo $this->GtwRequire->req('admin/app');?>
-        <?php echo $this->GtwRequire->req('admin/dashboard');?>
     </body>
 </html>

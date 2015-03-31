@@ -2,6 +2,7 @@
 namespace GintonicCMS\View\Helper;
 
 use Cake\View\Helper;
+use Cake\Filesystem\File;
 
 class CustomHelper extends Helper 
 {
@@ -20,6 +21,16 @@ class CustomHelper extends Helper
             }
         }
         return '';
+    }
+    
+    public function getFileUrl($fileName = null,$defaultFile = DEFAULT_ADMIN_IMAGE_URL){
+        if(!empty($fileName)){
+            $file = new File(WWW_ROOT . '/files/uploads/' . $fileName);
+            if($file->exists()){
+                return '/files/uploads/' . $fileName;
+            }
+        }
+        return $defaultFile;
     }
     
 }

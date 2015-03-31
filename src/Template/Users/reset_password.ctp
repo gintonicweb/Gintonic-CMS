@@ -7,7 +7,7 @@ use Cake\Core\Configure;
             <h1 class="text-center login-title">Reset your password</h1>
             <div class="account-wall">
                 <?php
-                echo $this->Html->image(Configure::read('Gtw.site_logo_url'), ["class" => "img-responsive profile-img", "alt" => Configure::read('Gtw.site_name')]);
+                echo $this->Html->image(Configure::read('site_logo_url'), ["class" => "img-responsive profile-img", "alt" => Configure::read('.site_name')]);
                 echo $this->Form->create('Users', ['class' => 'form-signin','url'=>['controller'=>'Users','action'=>'reset_password',$userId,$token], 'id' => 'UserLoginForm', 'novalidate' => 'novalidate']);
                 echo $this->Flash->render();
                 echo $this->Form->input('new_password', ['label' => false,'type'=>'password', 'class' => 'form-control', 'placeholder' => 'New Password', 'required', 'autofocus','style'=>['margin-bottom:0px;']]);

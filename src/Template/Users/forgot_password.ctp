@@ -11,7 +11,7 @@ echo $this->GtwRequire->req('users/forgotpassword_validation');
             <h1 class="text-center login-title"><?php echo __('Forgot your password?'); ?></h1>
             <div class="account-wall">            
                 <?php 
-                echo $this->Html->image(Configure::read('Gtw.site_logo_url'), ["class" => "img-responsive profile-img", "alt" => Configure::read('Gtw.site_name')]);
+                echo $this->Html->image(Configure::read('site_logo_url'), ["class" => "img-responsive profile-img", "alt" => Configure::read('Gtw.site_name')]);
                 echo $this->Form->create('Users', ['templates'=>['submitContainer' => '<div class="submit form-group">{{content}}</div>'],'class' => 'form-signin form-horizontal', 'id' => 'UserForgotPasswordForm', 'novalidate' => 'novalidate']);
                 echo $this->Flash->render();
                 echo $this->Form->input('email',['autofocus','placeholder'=>__('Email'),'required']);
