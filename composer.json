@@ -40,7 +40,8 @@
         "league/glide": "dev-master",
         "admad/cakephp-glide": "dev-master",
         "admad/cakephp-jwt-auth": "1.0.*@dev",
-        "muffin/trash": "dev-master"
+        "muffin/trash": "dev-master",
+        "gintonicweb/makeup": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "*"

@@ -25,6 +25,7 @@ Configure::write('Websockets.scope', false);
 Plugin::load('Images', ['bootstrap' => true]);
 
 // Themes
+Plugin::load('Gintonic/Makeup');
 Plugin::load('AdminTheme');
 Plugin::load('TwbsTheme');
 
@@ -38,6 +39,3 @@ EventManager::instance()->attach(new RoleListener());
 // Application base
 Plugin::load('Posts', ['bootstrap' => 'true']);
 Plugin::load('Messages', ['routes' => true, 'bootstrap' => 'true']);
-
-
-
