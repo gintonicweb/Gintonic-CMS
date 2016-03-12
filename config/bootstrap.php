@@ -30,7 +30,7 @@ Plugin::load('AdminTheme');
 Plugin::load('TwbsTheme');
 
 // Users Management
-Plugin::load('Users', ['routes' => true, 'bootstrap' => 'true']);
+Plugin::load('Users', ['routes' => true, 'bootstrap' => true]);
 Plugin::load('FOC/Authenticate');
 Plugin::load('Permissions', ['routes' => true]);
 EventManager::instance()->attach(new RoleListener());
