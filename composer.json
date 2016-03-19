@@ -35,7 +35,6 @@
         "gintonicweb/twbs-theme": "dev-master",
         "gintonicweb/users": "@dev",
         "gintonicweb/requirejs": "~0.2",
-        "gintonicweb/websockets": "dev-master",
         "league/glide": "dev-master",
         "admad/cakephp-glide": "dev-master",
         "admad/cakephp-jwt-auth": "1.0.*@dev",
