@@ -18,7 +18,7 @@ class GintonicShell extends Shell
      *
      * @return bool|int Success or error code.
      */
-    public function update()
+    public function install()
     {
         $connections = ConnectionManager::configured();
         if (empty($connections)) {
@@ -29,8 +29,6 @@ class GintonicShell extends Shell
 
         $this->migrate();
         $this->migrate('Users');
-        $this->migrate('Posts');
-        $this->migrate('Messages');
         $this->migrate('Permissions');
 
         $this->dispatchShell('plugin assets symlink');

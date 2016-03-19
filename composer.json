@@ -29,10 +29,9 @@
         "FriendsOfCake/search": "dev-master",
         "gintonicweb/admin-theme": "dev-master",
         "gintonicweb/images": "dev-master",
-        "gintonicweb/messages": "dev-master",
+        "gintonicweb/makeup": "dev-master"
         "gintonicweb/menus": "dev-master",
         "gintonicweb/permissions": "dev-master",
-        "gintonicweb/posts": "dev-master",
         "gintonicweb/twbs-theme": "dev-master",
         "gintonicweb/users": "@dev",
         "gintonicweb/requirejs": "~0.2",
@@ -41,7 +40,6 @@
         "admad/cakephp-glide": "dev-master",
         "admad/cakephp-jwt-auth": "1.0.*@dev",
         "muffin/trash": "dev-master",
-        "gintonicweb/makeup": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "*"

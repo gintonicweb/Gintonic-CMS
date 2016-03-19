@@ -16,10 +16,6 @@ Configure::write('CrudView', []);
 
 // Javascript
 Plugin::load('Requirejs');
-Plugin::load('Websockets', ['bootstrap' => true]);
-EventManager::instance()->attach(new WebsocketsListener());
-Configure::write('Websockets.userModel', 'Users.Users');
-Configure::write('Websockets.scope', false);
 
 // File management
 Plugin::load('Images', ['bootstrap' => true]);
@@ -34,8 +30,3 @@ Plugin::load('Users', ['routes' => true, 'bootstrap' => true]);
 Plugin::load('FOC/Authenticate');
 Plugin::load('Permissions', ['routes' => true]);
 EventManager::instance()->attach(new RoleListener());
-
-
-// Application base
-Plugin::load('Posts', ['bootstrap' => 'true']);
-Plugin::load('Messages', ['routes' => true, 'bootstrap' => 'true']);
