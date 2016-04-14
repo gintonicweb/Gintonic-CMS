@@ -31,8 +31,6 @@ class GintonicShell extends Shell
         $this->migrate('Users');
         $this->migrate('Permissions');
 
-        $this->dispatchShell('plugin assets symlink');
-
         $this->cleanup();
     }
 
