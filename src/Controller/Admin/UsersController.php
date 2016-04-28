@@ -13,6 +13,11 @@ use Permissions\Model\Entity\Role;
  */
 class UsersController extends AppController
 {
+    public function initialize()
+    {
+        $this->Users = TableRegistry::get('Users.Users');
+    }
+
     /**
      * {@inheritDoc}
      */
