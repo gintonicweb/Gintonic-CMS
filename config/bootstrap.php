@@ -29,4 +29,3 @@ Plugin::load('TwbsTheme');
 Plugin::load('Users', ['routes' => true, 'bootstrap' => true]);
 Plugin::load('FOC/Authenticate');
 Plugin::load('Permissions', ['routes' => true]);
-EventManager::instance()->attach(new RoleListener());
