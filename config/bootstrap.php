@@ -17,9 +17,6 @@ Configure::write('CrudView', []);
 // Javascript
 Plugin::load('Requirejs');
 
-// File management
-Plugin::load('Images', ['bootstrap' => true]);
-
 // Themes
 Plugin::load('Gintonic/Makeup');
 Plugin::load('AdminTheme');
