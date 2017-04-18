@@ -1,4 +1,6 @@
 # GintonicCMS plugin for CakePHP
+
+[![Join the chat at https://gitter.im/gintonicweb/GintonicCMS](https://badges.gitter.im/gintonicweb/GintonicCMS.svg)](https://gitter.im/gintonicweb/GintonicCMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/gintonicweb/GintonicCMS.svg)](https://travis-ci.org/gintonicweb/GintonicCMS)
 [![codecov.io](https://codecov.io/github/gintonicweb/GintonicCMS/coverage.svg?branch=master)](https://codecov.io/github/gintonicweb/GintonicCMS?branch=master)
 [![Code Consistency](https://squizlabs.github.io/PHP_CodeSniffer/analysis/gintonicweb/GintonicCMS/grade.svg)](http://squizlabs.github.io/PHP_CodeSniffer/analysis/gintonicweb/GintonicCMS/)
